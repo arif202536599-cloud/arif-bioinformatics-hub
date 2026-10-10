@@ -5,6 +5,7 @@ import {
   ShieldCheck, Sparkles, ChevronDown, BellRing
 } from 'lucide-react';
 import { YoutubeIcon } from './YoutubeIcon';
+import { isAndroidBuild } from '../../native/platform';
 import { useAuth } from '../../context/AuthContext';
 import { useUserData } from '../../context/UserDataContext';
 
@@ -233,7 +234,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                       className="w-full text-left px-3 py-2 text-xs text-slate-700 hover:text-orange-950 hover:bg-orange-50 rounded-lg flex items-center space-x-2 transition-colors font-medium"
                     >
                       <User className="w-3.5 h-3.5 text-indigo-600" />
-                      <span>Switch Account / Sign In</span>
+                      <span>{isAndroidBuild ? 'Privacy & app storage' : 'Switch Account / Sign In'}</span>
                     </button>
 
                     <button

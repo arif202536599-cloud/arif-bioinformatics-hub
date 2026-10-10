@@ -136,3 +136,7 @@ npm run build
 ## 📜 License
 
 Distributed under the MIT License. See `LICENSE` for details.
+
+## Android app: Arif Bio Hub
+
+The full hub is packaged locally with Capacitor 8. See [README_ANDROID.md](README_ANDROID.md) for exact Windows setup, debug APK builds, backend readiness, signing and Play Store steps. Android source is in `android/`; policy and listing drafts are in `mobile/play-store/`. Android preview build artifacts are for testing, not a published store release.

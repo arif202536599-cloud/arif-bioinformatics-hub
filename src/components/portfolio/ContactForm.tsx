@@ -1,3 +1,4 @@
+import { exportReport } from '../../native/download';
 import React, { useState } from 'react';
 import { Mail, Phone, Download, Send, CheckCircle2, FileText, Award, ExternalLink, Sparkles } from 'lucide-react';
 import { YoutubeIcon } from '../common/YoutubeIcon';
@@ -63,13 +64,7 @@ Bioinformatics researcher and MPhil scholar specializing in NGS data analysis, b
 
     const mimeType = format === 'md' ? 'text/markdown;charset=utf-8;' : 'text/plain;charset=utf-8;';
     const blob = new Blob([cvContent], { type: mimeType });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = `Arif_Uddin_Bioinformatics_CV.${format}`;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    exportReport(`Arif_Uddin_Bioinformatics_CV.${format}`, blob);
   };
 
   return (

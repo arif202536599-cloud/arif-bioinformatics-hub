@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import { isAndroidBuild } from '../native/platform';
 import { supabase, isSupabaseConfigured } from '../lib/supabase';
 
 export interface UserProfile {
@@ -98,6 +99,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   const signIn = async (email: string, password?: string): Promise<{ success: boolean; error?: string }> => {
+    if (isAndroidBuild) return { success: false, error: 'This Android release uses a local guest session. Online accounts are not available.' };
     if (isSupabaseConfigured && supabase && password) {
       try {
         const { error } = await supabase.auth.signInWithPassword({ email, password });
@@ -123,6 +125,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   const signUp = async (email: string, password?: string, name?: string): Promise<{ success: boolean; error?: string }> => {
+    if (isAndroidBuild) return { success: false, error: 'This Android release does not create online accounts.' };
     if (isSupabaseConfigured && supabase && password) {
       try {
         const { error } = await supabase.auth.signUp({

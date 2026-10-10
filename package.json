@@ -9,9 +9,20 @@
     "lint": "oxlint",
     "preview": "vite preview",
     "test": "vitest run",
-    "check:function": "esbuild netlify/functions/central-dogma.mjs --bundle --platform=node --target=node24 --format=esm --packages=external --outfile=.function-check/central-dogma.mjs"
+    "check:function": "esbuild netlify/functions/central-dogma.mjs --bundle --platform=node --target=node24 --format=esm --packages=external --outfile=.function-check/central-dogma.mjs",
+    "android:build:web": "node scripts/build-android.mjs",
+    "android:sync": "npm run android:build:web && cap sync android",
+    "android:open": "cap open android",
+    "android:preflight": "node scripts/android-preflight.mjs"
   },
   "dependencies": {
+    "@capacitor/android": "^8.5.3",
+    "@capacitor/app": "^8.1.2",
+    "@capacitor/browser": "^8.0.5",
+    "@capacitor/core": "^8.5.3",
+    "@capacitor/filesystem": "^8.1.4",
+    "@capacitor/network": "^8.0.1",
+    "@capacitor/share": "^8.0.3",
     "@netlify/blobs": "^11.1.4",
     "@supabase/supabase-js": "^2.116.0",
     "@types/canvas-confetti": "^1.9.0",
@@ -25,6 +36,7 @@
     "three": "^0.186.0"
   },
   "devDependencies": {
+    "@capacitor/cli": "^8.5.3",
     "@tailwindcss/vite": "^4.3.3",
     "@testing-library/react": "^16.3.3",
     "@testing-library/user-event": "^14.6.7",

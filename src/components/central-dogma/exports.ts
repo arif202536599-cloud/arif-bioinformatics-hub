@@ -1,11 +1,7 @@
 import { fasta, geneStructureSvg } from '../../../shared/central-dogma.mjs';
 
-export function downloadFile(name: string, contents: Blob | string, mime = 'text/plain') {
-  const blob = contents instanceof Blob ? contents : new Blob([contents], { type: mime });
-  const url = URL.createObjectURL(blob), anchor = document.createElement('a');
-  anchor.href = url; anchor.download = name; anchor.click();
-  setTimeout(() => URL.revokeObjectURL(url), 10000);
-}
+export { downloadReport as downloadFile } from '../../native/download';
+import { downloadReport as downloadFile } from '../../native/download';
 
 export function sequenceDownloads(details: Record<string, any>, queries?: any[]): Record<string, string> {
   const entries: Record<string, { id: string; sequence: string }[]> = { query_proteins: [], reference_proteins: [], transcripts: [], cds: [], computed_proteins: [], genomic_dna: [] };
@@ -66,7 +62,7 @@ export async function downloadExcel(queries: any[], jobs: any[], details: Record
     { rule: 'Genetic codes', detail: 'Biopython 1.88 genetic code tables; transl_table, codon_start and explicit codon-position exceptions are recorded.' },
   ]);
   const data = await workbook.xlsx.writeBuffer();
-  downloadFile('central_dogma_report.xlsx', new Blob([data as BlobPart], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' }));
+  await downloadFile('central_dogma_report.xlsx', new Blob([data as BlobPart], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' }));
 }
 
 export async function downloadFigurePNG(detail: any) {
@@ -79,6 +75,6 @@ export async function downloadFigurePNG(detail: any) {
     if (!ctx) throw new Error('PNG rendering is unavailable. Download SVG instead.');
     ctx.scale(2, 2); ctx.drawImage(image, 0, 0);
     const blob = await new Promise<Blob | null>(resolve => canvas.toBlob(resolve, 'image/png'));
-    if (blob) downloadFile('gene_structure.png', blob);
+    if (blob) await downloadFile('gene_structure.png', blob);
   } finally { URL.revokeObjectURL(url); }
 }

@@ -1,3 +1,4 @@
+import { exportReport } from '../../native/download';
 import React, { useState } from 'react';
 import { Table, Plus, Trash2, Download, FileText, Sparkles, Copy, Check, GraduationCap } from 'lucide-react';
 
@@ -79,13 +80,7 @@ export const LitReviewMatrix: React.FC = () => {
     });
 
     const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = 'literature_review_matrix.csv';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    exportReport('literature_review_matrix.csv', blob);
   };
 
   const handleGenerateSynopsis = () => {

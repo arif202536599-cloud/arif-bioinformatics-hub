@@ -1,3 +1,4 @@
+import { exportReport } from '../../native/download';
 import React from 'react';
 import { useAuth } from '../../context/AuthContext';
 import { useUserData } from '../../context/UserDataContext';
@@ -41,13 +42,7 @@ export const MyProgress: React.FC<{ onNavigate: (tab: string, extraId?: string) 
     }
 
     const blob = new Blob([report], { type: 'text/markdown;charset=utf-8;' });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = `BioHub_Learning_Progress_Report.md`;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    exportReport(`BioHub_Learning_Progress_Report.md`, blob);
   };
 
   return (

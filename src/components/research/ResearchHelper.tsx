@@ -1,3 +1,4 @@
+import { exportReport } from '../../native/download';
 import React, { useState } from 'react';
 import { 
   Compass, Lightbulb, CheckCircle2, Sparkles, BookOpen, 
@@ -118,13 +119,7 @@ ${degreeLevel === 'BS' ? `
 `;
 
     const blob = new Blob([text], { type: 'text/markdown;charset=utf-8;' });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = `Research_Blueprint_${degreeLevel}_${researchDomain}.md`;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    exportReport(`Research_Blueprint_${degreeLevel}_${researchDomain}.md`, blob);
   };
 
   return (
