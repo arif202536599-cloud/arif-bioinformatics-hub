@@ -20,4 +20,4 @@ Developed by Arif Uddin. Contact: fivupw005@gmail.com; +92 343 3519195.
 
 Proposed category: Education. Decide the audience based on the final app and complete Console's rating questionnaire; no rating is assumed here.
 
-Required store assets remain to be captured/prepared from the tested app. Do not use mock screenshots as evidence of functioning live analysis. The Android launcher DNA icon is included as editable vector resources.
+A 512×512 PNG icon and 1024×500 PNG feature graphic are supplied beside this draft. Actual phone screenshots remain to be captured from the tested app. Do not use mock screenshots as evidence of functioning live analysis. The Android launcher DNA icon is included as editable vector resources.
