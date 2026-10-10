@@ -49,3 +49,12 @@ describe('web explorer controls and exports',()=>{
     render(<CentralDogmaExplorer/>);expect(screen.getByText('SAVED123')).toBeTruthy();
   });
 });
+
+it('explains the gene-expression pathway and the limits of protein-origin lookup',async()=>{
+  const user=userEvent.setup();render(<CentralDogmaExplorer/>);
+  await user.click(screen.getByText('Understand the central dogma: DNA → RNA → protein'));
+  expect(screen.getByRole('heading',{name:'Genomic DNA'})).toBeTruthy();
+  expect(screen.getByRole('heading',{name:'RNA, mRNA and CDS'})).toBeTruthy();
+  expect(screen.getByText('Reference transcript ≠ RNA-seq')).toBeTruthy();
+  expect(screen.getByText(/different codons, genes and organisms can produce the same protein/)).toBeTruthy();
+});

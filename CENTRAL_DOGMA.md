@@ -15,6 +15,23 @@ NCBI Taxonomy, and select an organism or taxonomic group.
    structure SVG/PNG. **Try offline demonstration** uses clearly labelled
    synthetic data and makes no biological database request.
 
+## Central dogma: the concept
+
+The central dogma describes sequence-information transfer between biological
+molecules. The usual protein-coding gene-expression pathway is **DNA → RNA →
+protein**: transcription produces RNA from DNA; translation reads the RNA's
+coding sequence (CDS) to produce a protein. Exons are joined and introns removed
+where splicing is annotated. A transcript's untranslated regions (UTRs) are not
+part of its translated CDS. Reference transcripts in this explorer are shown in
+cDNA alphabet (T), separately from genomic DNA, extracted CDS and proteins.
+RNA replication and reverse transcription occur in some biological systems;
+the illustrated gene-expression pathway does not cover every such process.
+
+The expandable **Understand the central dogma** lesson on the web page explains
+these terms and why a protein-to-gene lookup is reference evidence, rather than
+reconstruction of the original sample's DNA. Reference RNA sequences do not
+supply RNA-seq reads, measured expression or experimental sample provenance.
+
 ## Scientific interpretation
 
 A protein sequence does not uniquely determine its original DNA or organism.

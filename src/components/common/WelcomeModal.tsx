@@ -67,7 +67,7 @@ export const WelcomeModal: React.FC<WelcomeModalProps> = ({ onExplore }) => {
         </p>
 
         {/* Feature Grid Highlights */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
           <div className="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800/80 flex items-start space-x-3">
             <BookOpen className="w-5 h-5 text-teal-400 shrink-0 mt-0.5" />
             <div>
@@ -87,6 +87,13 @@ export const WelcomeModal: React.FC<WelcomeModalProps> = ({ onExplore }) => {
             <div>
               <h4 className="text-xs font-semibold text-slate-200">3D Protein Explorer</h4>
               <p className="text-[11px] text-slate-400 mt-0.5">Rice GA20ox2 (*sd1*), TP53 & Plant Signaling</p>
+            </div>
+          </div>
+          <div className="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800/80 flex items-start space-x-3">
+            <Dna className="w-5 h-5 text-teal-400 shrink-0 mt-0.5" />
+            <div>
+              <h4 className="text-xs font-semibold text-slate-200">Central Dogma Explorer</h4>
+              <p className="text-[11px] text-slate-400 mt-0.5">Protein FASTA → reference genes, RNA, CDS & genomic DNA</p>
             </div>
           </div>
         </div>

@@ -4,6 +4,7 @@ import { parseProteins, exactMatch, blastCandidates, locationParts, transcriptEv
 import type { ProteinQuery } from '../../../shared/central-dogma.mjs';
 import { explorerAPI } from './api';
 import { centralDogmaDemo } from './demo';
+import { CentralDogmaConcept } from './CentralDogmaConcept';
 import { downloadFile, downloadExcel, downloadFigurePNG, sequenceDownloads } from './exports';
 import './central-dogma.css';
 
@@ -187,6 +188,8 @@ export default function CentralDogmaExplorer() {
       </div>
     </div>
     <div className="cd-note">A protein cannot uniquely reconstruct the original DNA. Identical proteins may belong to multiple genes or organisms. Reference mapping is evidence, not proof of your sample’s origin. RNA-seq expression needs separate experimental data.</div>
+
+    <CentralDogmaConcept />
 
     <div className="cd-input-grid">
       <div className="cd-panel"><h2><span>1</span> Add your proteins</h2>

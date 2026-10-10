@@ -39,8 +39,8 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab }) => {
               </div>
               <div className="flex items-center space-x-2">
                 <Phone className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
-                <a href="tel:+923099062590" className="font-mono text-emerald-950 font-semibold hover:underline">
-                  +92 309 9062590
+                <a href="tel:+923433519195" className="font-mono text-emerald-950 font-semibold hover:underline">
+                  +92 343 3519195
                 </a>
               </div>
             </div>
@@ -107,6 +107,11 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab }) => {
               <li>
                 <button onClick={() => setActiveTab('protein')} className="hover:text-orange-700 transition-colors text-left cursor-pointer">
                   3D Protein Explorer (OsGA20ox2 / TP53)
+                </button>
+              </li>
+              <li>
+                <button onClick={() => setActiveTab('central-dogma')} className="hover:text-orange-700 transition-colors text-left cursor-pointer">
+                  Central Dogma: Protein → Gene Explorer
                 </button>
               </li>
               <li>

@@ -40,7 +40,7 @@ const defaultConnectedUsers: ConnectedUser[] = [
     id: 'BIO-1001',
     name: 'Arif Uddin',
     email: 'fivupw005@gmail.com',
-    phone: '+92 309 9062590',
+    phone: '+92 343 3519195',
     role: 'Bioinformatics Lead & Educator (Admin)',
     institution: 'Bioinformatics Research & Learning Hub',
     status: 'Active - Lifetime VIP',
@@ -141,7 +141,12 @@ export const UserDataProvider: React.FC<{ children: React.ReactNode }> = ({ chil
 
   const [connectedUsersList, setConnectedUsersList] = useState<ConnectedUser[]>(() => {
     const saved = localStorage.getItem(USERS_KEY);
-    return saved ? JSON.parse(saved) : defaultConnectedUsers;
+    const users: ConnectedUser[] = saved ? JSON.parse(saved) : defaultConnectedUsers;
+    // Refresh only Arif's original seeded contact in existing browser sessions.
+    // User-edited contacts and every other subscriber remain as saved.
+    return users.map(user => user.id === 'BIO-1001' && user.email === 'fivupw005@gmail.com'
+      && user.phone?.replace(/\D/g, '') === '923099062590'
+      ? { ...user, phone: '+92 343 3519195' } : user);
   });
 
   useEffect(() => {

@@ -234,7 +234,7 @@ export const SidebarTOC: React.FC<SidebarTOCProps> = ({ isOpen, onClose, activeT
           </div>
           <div className="flex items-center space-x-1.5 text-slate-600">
             <Phone className="w-3 h-3 text-emerald-600" />
-            <span className="font-mono">+92 309 9062590</span>
+            <span className="font-mono">+92 343 3519195</span>
           </div>
         </div>
       </div>

@@ -71,7 +71,7 @@ export const ProfileDetails: React.FC = () => {
                 </span>
                 <span className="flex items-center space-x-1 font-mono">
                   <Phone className="w-3.5 h-3.5 text-emerald-600" />
-                  <span>+92 309 9062590</span>
+                  <span>+92 343 3519195</span>
                 </span>
               </div>
             </div>

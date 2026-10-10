@@ -27,7 +27,7 @@ export const ContactForm: React.FC = () => {
     const cvContent = `# Academic Curriculum Vitae: Arif Uddin
 **Academic Degree:** MPhil in Bioinformatics
 **Official Email:** fivupw005@gmail.com
-**Contact Number / WhatsApp:** +92 309 9062590
+**Contact Number / WhatsApp:** +92 343 3519195
 **YouTube Channel:** https://www.youtube.com/@Bioinformatics_Mastery
 **Research Specialization:** Pan-Genomics, Bulk & Single-Cell RNA-seq, Plant Molecular Biology, Protein Docking, Rice Culm Lodging Resistance.
 
@@ -56,7 +56,7 @@ Bioinformatics researcher and MPhil scholar specializing in NGS data analysis, b
 
 ## 5. Contact Information
 - **Email:** fivupw005@gmail.com
-- **Phone / WhatsApp:** +92 309 9062590
+- **Phone / WhatsApp:** +92 343 3519195
 - **YouTube:** https://www.youtube.com/@Bioinformatics_Mastery
 - **Platform:** http://arif_bioinformatics_mastery.com
 `;
@@ -135,7 +135,7 @@ Bioinformatics researcher and MPhil scholar specializing in NGS data analysis, b
 
             {/* Phone & WhatsApp */}
             <a
-              href="tel:+923099062590"
+              href="tel:+923433519195"
               className="p-3.5 rounded-2xl bg-white border border-orange-200 hover:border-emerald-400 flex items-center justify-between transition-all group shadow-xs"
             >
               <div className="flex items-center space-x-3">
@@ -146,7 +146,7 @@ Bioinformatics researcher and MPhil scholar specializing in NGS data analysis, b
                   <span className="font-bold text-slate-900 group-hover:text-emerald-700 transition-colors block">
                     Contact Number / WhatsApp
                   </span>
-                  <span className="text-[11px] font-mono text-slate-600">+92 309 9062590</span>
+                  <span className="text-[11px] font-mono text-slate-600">+92 343 3519195</span>
                 </div>
               </div>
               <ExternalLink className="w-4 h-4 text-slate-400 group-hover:text-emerald-700 transition-colors" />

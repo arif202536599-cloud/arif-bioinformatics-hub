@@ -13,7 +13,7 @@ An educational and research platform created by **Arif Uddin** (MPhil in Bioinfo
 
 ## 🌐 Official Website Links & Online Access
 
-* **Netlify Hub (live Central Dogma backend):** <https://capable-fairy-dd36f0.netlify.app/>
+* **Netlify Hub (deployment target for live analysis):** <https://capable-fairy-dd36f0.netlify.app/>
 * 🔗 **GitHub Pages Hub Link:**
   **`https://arif202536599-cloud.github.io/arif-bioinformatics-hub/`**
 * 🌐 **Custom Domain (Configured):**  
@@ -127,7 +127,7 @@ npm run build
 **Arif Uddin**  
 *Bioinformatician | MPhil in Bioinformatics*  
 * **Email:** [fivupw005@gmail.com](mailto:fivupw005@gmail.com)  
-* **Contact Number / WhatsApp:** [+92 309 9062590](tel:+923099062590)  
+* **Contact Number / WhatsApp:** [+92 343 3519195](tel:+923433519195)
 * **YouTube Channel:** [Bioinformatics Mastery (@Bioinformatics_Mastery)](https://www.youtube.com/@Bioinformatics_Mastery)  
 * **Research Specialization:** RNA-seq Transcriptomics, Pan-Genomics, Plant Lodging Resistance, 3D Molecular Docking, Multi-Omics.
 
