@@ -31,77 +31,79 @@ export const WelcomeModal: React.FC<WelcomeModalProps> = ({ onExplore }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-bio-950/80 backdrop-blur-md animate-fadeIn">
-      <div className="relative w-full max-w-2xl overflow-hidden rounded-2xl bg-gradient-to-b from-bio-900/90 via-bio-900/80 to-bio-950/95 border border-cyan-500/40 shadow-2xl shadow-cyan-500/20 p-6 md:p-8 backdrop-blur-xl">
-        {/* Glow ambient background elements */}
-        <div className="absolute -top-24 -right-24 w-56 h-56 bg-cyan-500/20 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute -bottom-24 -left-24 w-56 h-56 bg-teal-500/20 rounded-full blur-3xl pointer-events-none" />
-
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-sm animate-fadeIn">
+      <div
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="welcome-title"
+        aria-describedby="welcome-description"
+        className="relative w-full max-w-2xl max-h-[calc(100dvh-2rem)] overflow-y-auto rounded-2xl bg-white border border-orange-200 shadow-2xl p-6 md:p-8 font-sans text-base leading-relaxed text-slate-900"
+      >
         {/* Close Button */}
         <button
           onClick={handleSkip}
-          className="absolute top-4 right-4 p-2 text-slate-400 hover:text-slate-100 hover:bg-slate-800/60 rounded-lg transition-colors"
+          className="absolute top-4 right-4 p-2 text-slate-800 hover:text-slate-950 hover:bg-orange-100 rounded-lg transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-700"
           title="Close modal"
         >
           <X className="w-5 h-5" />
         </button>
 
         {/* Header Icon */}
-        <div className="flex items-center space-x-3 mb-4">
-          <div className="p-3 bg-gradient-to-br from-cyan-500/20 to-teal-500/20 rounded-xl border border-cyan-500/30 text-cyan-300">
-            <Dna className="w-7 h-7 animate-pulse" />
+        <div className="flex items-center space-x-3 mb-4 pr-8">
+          <div className="hidden sm:block p-3 bg-orange-50 rounded-xl border border-orange-200 text-orange-800">
+            <Dna className="w-7 h-7" />
           </div>
           <div>
-            <span className="text-xs font-semibold uppercase tracking-wider text-cyan-400 bg-cyan-950/80 px-2.5 py-0.5 rounded-full border border-cyan-800/60">
+            <span className="inline-block text-sm font-semibold text-slate-900 bg-orange-50 px-2.5 py-1 rounded-lg border border-orange-200">
               MPhil Bioinformatics Platform
             </span>
-            <h2 className="text-2xl md:text-3xl font-bold text-white mt-1">
+            <h2 id="welcome-title" className="text-2xl md:text-3xl font-bold leading-tight text-slate-950 mt-3">
               Welcome to Bioinformatics Hub
             </h2>
           </div>
         </div>
 
         {/* Subtitle & Arif Uddin bio */}
-        <p className="text-slate-300 text-sm md:text-base leading-relaxed mb-6">
-          Curated by <strong className="text-cyan-300 font-semibold">Arif Uddin</strong>, an MPhil Bioinformatics researcher. This hub is engineered to accelerate bioinformatics education, simplify NGS and RNA-seq workflows, provide instant access to 38+ verified databases, explore 3D protein structures, and provide ethical AI guidance.
+        <p id="welcome-description" className="text-slate-800 text-base leading-7 mb-6">
+          Curated by <strong className="text-slate-950 font-bold">Arif Uddin</strong>, an MPhil Bioinformatics researcher. This hub is engineered to accelerate bioinformatics education, simplify NGS and RNA-seq workflows, provide instant access to 38+ verified databases, explore 3D protein structures, and provide ethical AI guidance.
         </p>
 
         {/* Feature Grid Highlights */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
-          <div className="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800/80 flex items-start space-x-3">
-            <BookOpen className="w-5 h-5 text-teal-400 shrink-0 mt-0.5" />
+          <div className="p-4 rounded-xl bg-orange-50 border border-orange-200 flex items-start space-x-3">
+            <BookOpen className="w-5 h-5 text-teal-800 shrink-0 mt-0.5" />
             <div>
-              <h4 className="text-xs font-semibold text-slate-200">5 Learning Paths</h4>
-              <p className="text-[11px] text-slate-400 mt-0.5">RNA-seq, Gene Families, Docking & Multi-Omics</p>
+              <h4 className="text-base font-bold text-slate-950">5 Learning Paths</h4>
+              <p className="text-sm leading-6 text-slate-800 mt-1">RNA-seq, Gene Families, Docking & Multi-Omics</p>
             </div>
           </div>
-          <div className="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800/80 flex items-start space-x-3">
-            <Database className="w-5 h-5 text-cyan-400 shrink-0 mt-0.5" />
+          <div className="p-4 rounded-xl bg-orange-50 border border-orange-200 flex items-start space-x-3">
+            <Database className="w-5 h-5 text-cyan-800 shrink-0 mt-0.5" />
             <div>
-              <h4 className="text-xs font-semibold text-slate-200">38+ Verified Tools</h4>
-              <p className="text-[11px] text-slate-400 mt-0.5">BLAST, SRA, AlphaFold, DESeq2, Vina & R</p>
+              <h4 className="text-base font-bold text-slate-950">38+ Verified Tools</h4>
+              <p className="text-sm leading-6 text-slate-800 mt-1">BLAST, SRA, AlphaFold, DESeq2, Vina & R</p>
             </div>
           </div>
-          <div className="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800/80 flex items-start space-x-3">
-            <Atom className="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" />
+          <div className="p-4 rounded-xl bg-orange-50 border border-orange-200 flex items-start space-x-3">
+            <Atom className="w-5 h-5 text-emerald-800 shrink-0 mt-0.5" />
             <div>
-              <h4 className="text-xs font-semibold text-slate-200">3D Protein Explorer</h4>
-              <p className="text-[11px] text-slate-400 mt-0.5">Rice GA20ox2 (*sd1*), TP53 & Plant Signaling</p>
+              <h4 className="text-base font-bold text-slate-950">3D Protein Explorer</h4>
+              <p className="text-sm leading-6 text-slate-800 mt-1">Rice GA20ox2 (*sd1*), TP53 & Plant Signaling</p>
             </div>
           </div>
-          <div className="p-3.5 rounded-xl bg-slate-900/60 border border-slate-800/80 flex items-start space-x-3">
-            <Dna className="w-5 h-5 text-teal-400 shrink-0 mt-0.5" />
+          <div className="p-4 rounded-xl bg-orange-50 border border-orange-200 flex items-start space-x-3">
+            <Dna className="w-5 h-5 text-teal-800 shrink-0 mt-0.5" />
             <div>
-              <h4 className="text-xs font-semibold text-slate-200">Central Dogma Explorer</h4>
-              <p className="text-[11px] text-slate-400 mt-0.5">Protein FASTA → reference genes, RNA, CDS & genomic DNA</p>
+              <h4 className="text-base font-bold text-slate-950">Central Dogma Explorer</h4>
+              <p className="text-sm leading-6 text-slate-800 mt-1">Protein FASTA → reference genes, RNA, CDS & genomic DNA</p>
             </div>
           </div>
         </div>
 
         {/* Mode Notice */}
-        <div className="mb-6 p-3 rounded-xl bg-cyan-950/40 border border-cyan-800/40 flex items-center justify-between text-xs text-cyan-200/90">
-          <span className="flex items-center space-x-2">
-            <Sparkles className="w-4 h-4 text-cyan-400 shrink-0" />
+        <div className="mb-6 p-4 rounded-xl bg-teal-50 border border-teal-200 flex items-center justify-between text-sm leading-6 text-slate-900">
+          <span className="flex items-start space-x-2">
+            <Sparkles className="w-4 h-4 text-teal-800 shrink-0 mt-1" />
             <span>Running in <strong>Guest Demo Mode</strong> — no login or API keys required to explore!</span>
           </span>
         </div>
@@ -110,13 +112,13 @@ export const WelcomeModal: React.FC<WelcomeModalProps> = ({ onExplore }) => {
         <div className="flex flex-col sm:flex-row items-center justify-end space-y-2 sm:space-y-0 sm:space-x-3">
           <button
             onClick={handleSkip}
-            className="w-full sm:w-auto px-5 py-2.5 rounded-xl text-sm font-medium text-slate-400 hover:text-slate-200 bg-slate-800/60 hover:bg-slate-800 transition-colors"
+            className="w-full sm:w-auto px-5 py-3 rounded-xl text-base font-semibold text-slate-900 bg-slate-100 hover:bg-slate-200 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-700"
           >
             Skip for now
           </button>
           <button
             onClick={handleExplore}
-            className="w-full sm:w-auto px-6 py-2.5 rounded-xl text-sm font-semibold text-slate-950 bg-gradient-to-r from-cyan-400 via-teal-300 to-emerald-400 hover:from-cyan-300 hover:to-emerald-300 shadow-lg shadow-cyan-500/25 flex items-center justify-center space-x-2 transition-all duration-200 group"
+            className="w-full sm:w-auto px-6 py-3 rounded-xl text-base font-bold text-slate-950 bg-orange-200 hover:bg-orange-300 border border-orange-300 shadow-sm flex items-center justify-center space-x-2 transition-colors duration-200 group focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-700"
           >
             <Compass className="w-4 h-4 text-slate-950 group-hover:rotate-45 transition-transform" />
             <span>Explore Hub</span>
