@@ -26,6 +26,7 @@ export const SidebarTOC: React.FC<SidebarTOCProps> = ({ isOpen, onClose, activeT
     { id: 'learning', label: 'Learning Hub', icon: BookOpen, badge: '5 Pathways' },
     { id: 'software', label: 'Software & Databases', icon: Database, badge: '38+ Tools' },
     { id: 'protein', label: 'Protein 3D Explorer', icon: Atom, badge: '3D Simulation' },
+    { id: 'central-dogma', label: 'Central Dogma Explorer', icon: Dna, badge: 'Sequence → Gene' },
     { id: 'research', label: 'Research Hub & 2026 Roadmap', icon: FileText, badge: '7 Pillars' },
     { id: 'ai', label: 'AI in Bioinformatics', icon: Bot, badge: 'Responsible AI' },
     { id: 'subscribers', label: 'Connected Users & Excel Portal', icon: Users, badge: `${connectedUsersList.length} Connected` },
@@ -34,6 +35,10 @@ export const SidebarTOC: React.FC<SidebarTOCProps> = ({ isOpen, onClose, activeT
   ];
 
   const tocSubSections: Record<string, { title: string; items: string[] }> = {
+    'central-dogma': {
+      title: 'Reference-based Central Dogma',
+      items: ['Protein sequence / FASTA input', 'Search across organisms or specify taxonomy', 'BLASTp candidates and alignments', 'Linked gene, transcript, CDS and genomic DNA', 'Translation checks and gene structure', 'Excel, FASTA and evidence downloads'],
+    },
     home: {
       title: 'Home Sections',
       items: [

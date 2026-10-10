@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, lazy, Suspense } from 'react';
 import { AuthProvider } from './context/AuthContext';
 import { UserDataProvider } from './context/UserDataContext';
 import { Navbar } from './components/common/Navbar';
@@ -49,9 +49,16 @@ import { UserSubscriberPortal } from './components/users/UserSubscriberPortal';
 // Auth protected user pages
 import { MyProgress } from './components/auth/MyProgress';
 import { ResearchNotes } from './components/auth/ResearchNotes';
+const CentralDogmaExplorer = lazy(() => import('./components/central-dogma/CentralDogmaExplorer'));
 
 export const AppContent: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<string>('home');
+  const [activeTab, setActiveTab] = useState<string>(() => window.location.hash === '#central-dogma' ? 'central-dogma' : 'home');
+  useEffect(() => {
+    const update = () => { if (window.location.hash === '#central-dogma') setActiveTab('central-dogma'); };
+    window.addEventListener('hashchange', update);
+    return () => window.removeEventListener('hashchange', update);
+  }, []);
+  useEffect(() => { if (activeTab === 'central-dogma') window.history.replaceState(null, '', '#central-dogma'); else if (window.location.hash === '#central-dogma') window.history.replaceState(null, '', window.location.pathname + window.location.search); }, [activeTab]);
   const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false);
   const [isAuthOpen, setIsAuthOpen] = useState<boolean>(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false);
@@ -141,6 +148,11 @@ export const AppContent: React.FC = () => {
           <div className="space-y-6 animate-fadeIn">
             {/* Researcher Profile Banner */}
             <ProfileHero onNavigate={handleNavigate} />
+            <button onClick={() => handleNavigate('central-dogma')} className="w-full text-left p-5 rounded-2xl bg-teal-50 border border-teal-200 hover:border-teal-400 transition-colors">
+              <span className="text-[10px] font-bold tracking-widest text-teal-700 uppercase">New research tool</span>
+              <h2 className="text-lg font-extrabold text-teal-950 mt-1">Protein-to-Central-Dogma Explorer →</h2>
+              <p className="text-xs text-teal-700 mt-1">Paste a protein or upload FASTA. Explore matching organisms, genes, transcripts, CDS and genomic DNA with reference evidence.</p>
+            </button>
 
             {/* Quick Sequence Utility Toolbox */}
             <QuickToolbox />
@@ -235,6 +247,8 @@ export const AppContent: React.FC = () => {
             <ProteinAnalysisPanel protein={selectedProtein} />
           </div>
         )}
+
+        {activeTab === 'central-dogma' && <Suspense fallback={<p role="status">Loading Central Dogma Explorer…</p>}><CentralDogmaExplorer /></Suspense>}
 
         {/* =========================================================================
             TAB 5: RESEARCH HUB

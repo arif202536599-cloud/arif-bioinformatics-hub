@@ -87,6 +87,10 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose,
 
         {/* Results List */}
         <div className="overflow-y-auto p-4 space-y-4 divide-y divide-slate-800/60">
+          {(!query || /central|dogma|gene|sequence|protein/i.test(query)) && <button onClick={() => { onNavigate('central-dogma'); onClose(); }} className="w-full p-3 text-left text-teal-200 hover:bg-slate-800 rounded-xl">
+            <span className="font-bold text-sm">Protein-to-Central-Dogma Explorer</span>
+            <span className="block text-xs text-slate-400 mt-1">Protein → matching genes, transcripts, CDS and genomic DNA</span>
+          </button>}
           {/* Software & Databases */}
           {filteredTools.length > 0 && (
             <div>
@@ -205,7 +209,7 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose,
             </div>
           )}
 
-          {filteredTools.length === 0 && filteredPaths.length === 0 && filteredProteins.length === 0 && filteredAI.length === 0 && (
+          {filteredTools.length === 0 && filteredPaths.length === 0 && filteredProteins.length === 0 && filteredAI.length === 0 && query && !/central|dogma|gene|sequence|protein/i.test(query) && (
             <div className="p-8 text-center text-slate-400">
               <p className="text-sm">No exact matches found for "{query}".</p>
               <p className="text-xs text-slate-500 mt-1">Try searching for keywords like "RNA-seq", "BLAST", "Lodging", "Docking", "DESeq2", or "AlphaFold".</p>

@@ -22,3 +22,11 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Agent runtime and verification output
+.venv/
+.cache/
+__pycache__/
+.pytest_cache/
+.function-check/
+outputs/

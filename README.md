@@ -13,7 +13,8 @@ An educational and research platform created by **Arif Uddin** (MPhil in Bioinfo
 
 ## 🌐 Official Website Links & Online Access
 
-* 🔗 **Live Public Hub Link:**  
+* **Netlify Hub (live Central Dogma backend):** <https://capable-fairy-dd36f0.netlify.app/>
+* 🔗 **GitHub Pages Hub Link:**
   **`https://arif202536599-cloud.github.io/arif-bioinformatics-hub/`**
 * 🌐 **Custom Domain (Configured):**  
   **`http://arif-bioinformatics-mastery.com`** (via `public/CNAME`)
@@ -52,6 +53,12 @@ An educational and research platform created by **Arif Uddin** (MPhil in Bioinfo
 * Interactive WebGL 3D molecular canvas with Three.js.
 * Benchmark presets for *Oryza sativa* **OsGA20ox2 (*sd1*)**, *Homo sapiens* **TP53**, *Arabidopsis thaliana* **CLV3**, *SARS-CoV-2* **Spike (RBD)**, and *Oryza sativa* **OsWRKY45**.
 
+### Protein-to-Central-Dogma Explorer
+* Species-independent protein FASTA input, NCBI BLASTp candidates, explicit gene/transcript/CDS mappings, genomic locations and translation verification.
+* Excel, sequence FASTA, alignment/evidence JSON, and gene-structure SVG/PNG downloads.
+* Netlify Functions backend with shared pacing/cache; clearly labelled offline demonstration.
+* [Usage, scientific limits, hosting and Windows commands](CENTRAL_DOGMA.md). The local Python app and Codex agent workspace are in `protein_central_dogma`.
+
 ### 7. Research Hub & 2026 Roadmap
 * **7 Core Pillars of Research Writing:** Guidelines, reviewer traps, and templates.
 * **Interactive 2026 Roadmap:** 7-phase modern computational biology methodology.
@@ -67,7 +74,7 @@ An educational and research platform created by **Arif Uddin** (MPhil in Bioinfo
 ## 🚀 Local Development Setup
 
 ### Prerequisites
-* **Node.js:** v18.0.0 or higher
+* **Node.js:** v24.x
 * **npm:** v9.0.0 or higher
 
 ### Installation & Run
@@ -77,7 +84,7 @@ git clone https://github.com/arif202536599-cloud/arif-bioinformatics-hub.git
 cd arif-bioinformatics-hub
 
 # 2. Install dependencies
-npm install
+npm ci
 
 # 3. Start local development server
 npm run dev
@@ -111,7 +118,7 @@ npm run build
 
 * This repository **does not contain any passwords, tokens, API keys, or secret credentials**.
 * All sensitive credentials have been eliminated.
-* Demonstrations operate completely client-side in **Guest Demo Mode** using local storage.
+* The Central Dogma offline demonstration runs locally in the browser. Live searches send selected sequences to NCBI through the Netlify backend; cache and privacy details are documented in [CENTRAL_DOGMA.md](CENTRAL_DOGMA.md).
 
 ---
 

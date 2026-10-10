@@ -1,0 +1,197 @@
+<Entrezgene-Set>
+<Entrezgene>
+  <Entrezgene_track-info>
+    <Gene-track>
+      <Gene-track_geneid>3043</Gene-track_geneid>
+      <Gene-track_status value="live">0</Gene-track_status>
+      <Gene-track_create-date>
+        <Date>
+          <Date_std>
+            <Date-std>
+              <Date-std_year>1998</Date-std_year>
+              <Date-std_month>8</Date-std_month>
+              <Date-std_day>27</Date-std_day>
+            </Date-std>
+          </Date_std>
+        </Date>
+      </Gene-track_create-date>
+      <Gene-track_update-date>
+        <Date>
+          <Date_std>
+            <Date-std>
+              <Date-std_year>2026</Date-std_year>
+              <Date-std_month>9</Date-std_month>
+              <Date-std_day>13</Date-std_day>
+              <Date-std_hour>13</Date-std_hour>
+              <Date-std_minute>10</Date-std_minute>
+              <Date-std_second>0</Date-std_second>
+            </Date-std>
+          </Date_std>
+        </Date>
+      </Gene-track_update-date>
+    </Gene-track>
+  </Entrezgene_track-info>
+  <Entrezgene_gene>
+    <Gene-ref>
+      <Gene-ref_locus>HBB</Gene-ref_locus>
+      <Gene-ref_desc>hemoglobin subunit beta</Gene-ref_desc>
+      <Gene-ref_maploc>11p15.4</Gene-ref_maploc>
+      <Gene-ref_db>
+        <Dbtag>
+          <Dbtag_db>HGNC</Dbtag_db>
+          <Dbtag_tag>
+            <Object-id>
+              <Object-id_str>HGNC:4827</Object-id_str>
+            </Object-id>
+          </Dbtag_tag>
+        </Dbtag>
+        <Dbtag>
+          <Dbtag_db>Ensembl</Dbtag_db>
+          <Dbtag_tag>
+            <Object-id>
+              <Object-id_str>ENSG00000244734</Object-id_str>
+            </Object-id>
+          </Dbtag_tag>
+        </Dbtag>
+        <Dbtag>
+          <Dbtag_db>MIM</Dbtag_db>
+          <Dbtag_tag>
+            <Object-id>
+              <Object-id_id>141900</Object-id_id>
+            </Object-id>
+          </Dbtag_tag>
+        </Dbtag>
+        <Dbtag>
+          <Dbtag_db>AllianceGenome</Dbtag_db>
+          <Dbtag_tag>
+            <Object-id>
+              <Object-id_str>HGNC:4827</Object-id_str>
+            </Object-id>
+          </Dbtag_tag>
+        </Dbtag>
+      </Gene-ref_db>
+      <Gene-ref_syn>
+        <Gene-ref_syn_E>ECYT6</Gene-ref_syn_E>
+        <Gene-ref_syn_E>CD113t-C</Gene-ref_syn_E>
+        <Gene-ref_syn_E>beta-globin</Gene-ref_syn_E>
+      </Gene-ref_syn>
+      <Gene-ref_formal-name>
+        <Gene-nomenclature>
+          <Gene-nomenclature_status value="official" />
+          <Gene-nomenclature_symbol>HBB</Gene-nomenclature_symbol>
+          <Gene-nomenclature_name>hemoglobin subunit beta</Gene-nomenclature_name>
+          <Gene-nomenclature_source>
+            <Dbtag>
+              <Dbtag_db>HGNC</Dbtag_db>
+              <Dbtag_tag>
+                <Object-id>
+                  <Object-id_str>HGNC:4827</Object-id_str>
+                </Object-id>
+              </Dbtag_tag>
+            </Dbtag>
+          </Gene-nomenclature_source>
+        </Gene-nomenclature>
+      </Gene-ref_formal-name>
+    </Gene-ref>
+  </Entrezgene_gene>
+  <Entrezgene_summary>The alpha (HBA) and beta (HBB) loci determine the structure of the 2 types of polypeptide chains in adult hemoglobin, Hb A. The normal adult hemoglobin tetramer consists of two alpha chains and two beta chains. Mutant beta globin causes sickle cell anemia. Absence of beta chain causes beta-zero-thalassemia. Reduced amounts of detectable beta globin causes beta-plus-thalassemia. The order of the genes in the beta-globin cluster is 5'-epsilon -- gamma-G -- gamma-A -- delta -- beta--3'. [provided by RefSeq, Jul 2008]</Entrezgene_summary>
+  <Entrezgene_locus>
+    <Gene-commentary>
+      <Gene-commentary_type value="genomic">1</Gene-commentary_type>
+      <Gene-commentary_label>Chromosome 11 Reference GRCh38.p14 Primary Assembly</Gene-commentary_label>
+      <Gene-commentary_accession>NC_000011</Gene-commentary_accession>
+      <Gene-commentary_version>10</Gene-commentary_version>
+      <Gene-commentary_seqs>
+        <Seq-loc>
+          <Seq-loc_int>
+            <Seq-interval>
+              <Seq-interval_from>5225463</Seq-interval_from>
+              <Seq-interval_to>5227070</Seq-interval_to>
+              <Seq-interval_strand>
+                <Na-strand value="minus" />
+              </Seq-interval_strand>
+              <Seq-interval_id>
+                <Seq-id>
+                  <Seq-id_gi>568815587</Seq-id_gi>
+                </Seq-id>
+              </Seq-interval_id>
+            </Seq-interval>
+          </Seq-loc_int>
+        </Seq-loc>
+      </Gene-commentary_seqs>
+      </Gene-commentary>
+    <Gene-commentary>
+      <Gene-commentary_type value="genomic">1</Gene-commentary_type>
+      <Gene-commentary_label>RefSeqGene</Gene-commentary_label>
+      <Gene-commentary_accession>NG_000007</Gene-commentary_accession>
+      <Gene-commentary_version>3</Gene-commentary_version>
+      <Gene-commentary_seqs>
+        <Seq-loc>
+          <Seq-loc_int>
+            <Seq-interval>
+              <Seq-interval_from>70544</Seq-interval_from>
+              <Seq-interval_to>72151</Seq-interval_to>
+              <Seq-interval_strand>
+                <Na-strand value="plus" />
+              </Seq-interval_strand>
+              <Seq-interval_id>
+                <Seq-id>
+                  <Seq-id_gi>28380636</Seq-id_gi>
+                </Seq-id>
+              </Seq-interval_id>
+            </Seq-interval>
+          </Seq-loc_int>
+        </Seq-loc>
+      </Gene-commentary_seqs>
+      </Gene-commentary>
+    <Gene-commentary>
+      <Gene-commentary_type value="genomic">1</Gene-commentary_type>
+      <Gene-commentary_label>RefSeqGene</Gene-commentary_label>
+      <Gene-commentary_accession>NG_059281</Gene-commentary_accession>
+      <Gene-commentary_version>1</Gene-commentary_version>
+      <Gene-commentary_seqs>
+        <Seq-loc>
+          <Seq-loc_int>
+            <Seq-interval>
+              <Seq-interval_from>5000</Seq-interval_from>
+              <Seq-interval_to>6607</Seq-interval_to>
+              <Seq-interval_strand>
+                <Na-strand value="plus" />
+              </Seq-interval_strand>
+              <Seq-interval_id>
+                <Seq-id>
+                  <Seq-id_gi>1394355623</Seq-id_gi>
+                </Seq-id>
+              </Seq-interval_id>
+            </Seq-interval>
+          </Seq-loc_int>
+        </Seq-loc>
+      </Gene-commentary_seqs>
+      </Gene-commentary>
+    <Gene-commentary>
+      <Gene-commentary_type value="genomic">1</Gene-commentary_type>
+      <Gene-commentary_label>Chromosome 11 Alternate T2T-CHM13v2.0</Gene-commentary_label>
+      <Gene-commentary_accession>NC_060935</Gene-commentary_accession>
+      <Gene-commentary_version>1</Gene-commentary_version>
+      <Gene-commentary_seqs>
+        <Seq-loc>
+          <Seq-loc_int>
+            <Seq-interval>
+              <Seq-interval_from>5284831</Seq-interval_from>
+              <Seq-interval_to>5286438</Seq-interval_to>
+              <Seq-interval_strand>
+                <Na-strand value="minus" />
+              </Seq-interval_strand>
+              <Seq-interval_id>
+                <Seq-id>
+                  <Seq-id_gi>2194973393</Seq-id_gi>
+                </Seq-id>
+              </Seq-interval_id>
+            </Seq-interval>
+          </Seq-loc_int>
+        </Seq-loc>
+      </Gene-commentary_seqs>
+      </Gene-commentary>
+  </Entrezgene_locus>
+  </Entrezgene>
+</Entrezgene-Set>

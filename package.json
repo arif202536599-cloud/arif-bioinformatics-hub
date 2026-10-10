@@ -7,13 +7,18 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "oxlint",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "vitest run",
+    "check:function": "esbuild netlify/functions/central-dogma.mjs --bundle --platform=node --target=node24 --format=esm --packages=external --outfile=.function-check/central-dogma.mjs"
   },
   "dependencies": {
+    "@netlify/blobs": "^11.1.4",
     "@supabase/supabase-js": "^2.116.0",
     "@types/canvas-confetti": "^1.9.0",
     "@types/three": "^0.186.0",
     "canvas-confetti": "^1.9.4",
+    "exceljs": "^4.4.0",
+    "fast-xml-parser": "^5.11.2",
     "lucide-react": "^1.45.0",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
@@ -21,15 +26,20 @@
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.3.3",
+    "@testing-library/react": "^16.3.3",
+    "@testing-library/user-event": "^14.6.7",
     "@types/node": "^24.13.3",
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.7",
     "@vitejs/plugin-react": "^6.1.1",
     "autoprefixer": "^10.5.6",
+    "esbuild": "^0.28.2",
+    "jsdom": "^30.1.2",
     "oxlint": "^1.81.0",
     "postcss": "^8.5.28",
     "tailwindcss": "^4.3.3",
     "typescript": "~6.0.2",
-    "vite": "^8.3.0"
+    "vite": "^8.3.0",
+    "vitest": "^5.0.3"
   }
 }

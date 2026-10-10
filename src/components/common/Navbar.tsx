@@ -32,6 +32,7 @@ export const Navbar: React.FC<NavbarProps> = ({
     { id: 'learning', label: 'Learning Hub', icon: BookOpen, badge: '5 Paths' },
     { id: 'software', label: 'Tools & DBs', icon: Database, badge: '38+' },
     { id: 'protein', label: 'Protein 3D', icon: Atom, badge: 'Simulation' },
+    { id: 'central-dogma', label: 'Central Dogma', icon: Dna },
     { id: 'research', label: 'Research Hub', icon: FileText, badge: '2026' },
     { id: 'ai', label: 'AI Tools', icon: Bot },
     { id: 'subscribers', label: 'Users & Excel', icon: Users, badge: `${connectedUsersList.length}` },
@@ -78,7 +79,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           </div>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden xl:flex items-center space-x-1">
+          <nav className="hidden xl:flex items-center space-x-1 overflow-x-auto max-w-[52%] shrink">
             {navItems.map((item) => {
               const Icon = item.icon;
               const isActive = activeTab === item.id;
