@@ -1,3 +1,4 @@
+import { exportReport } from '../../native/download';
 import React from 'react';
 import { ProteinProfile } from '../../types';
 import { Download, FileText, CheckCircle2, ShieldCheck } from 'lucide-react';
@@ -58,13 +59,7 @@ ${protein.pathways.map(p => `      * ${p}`).join('\n')}
     const textContent = generateChecklistMarkdown();
     const mimeType = format === 'md' ? 'text/markdown;charset=utf-8;' : 'text/plain;charset=utf-8;';
     const blob = new Blob([textContent], { type: mimeType });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    link.setAttribute('href', url);
-    link.setAttribute('download', `${protein.geneSymbol.replace(/[^a-zA-Z0-9]/g, '_')}_analysis_checklist.${format}`);
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    exportReport(`${protein.geneSymbol.replace(/[^a-zA-Z0-9]/g, '_')}_analysis_checklist.${format}`, blob);
   };
 
   return (

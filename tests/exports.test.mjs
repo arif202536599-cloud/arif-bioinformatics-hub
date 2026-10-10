@@ -4,7 +4,7 @@ import { downloadExcel, sequenceDownloads } from '../src/components/central-dogm
 import { centralDogmaDemo } from '../src/components/central-dogma/demo';
 it('writes a real multi-sheet workbook, preserving evidence and preventing formulas',async()=>{
   const demo=centralDogmaDemo(), click=vi.fn();let blob;
-  vi.stubGlobal('document',{createElement:()=>({click})});vi.spyOn(URL,'createObjectURL').mockImplementation(value=>{blob=value;return 'blob:test';});
+  vi.stubGlobal('document',{body:{appendChild:vi.fn()},createElement:()=>({click,remove:vi.fn()})});vi.spyOn(URL,'createObjectURL').mockImplementation(value=>{blob=value;return 'blob:test';});
   try {
     demo.queries[0].id='=malicious_formula';
     await downloadExcel(demo.queries,demo.jobs,demo.details);

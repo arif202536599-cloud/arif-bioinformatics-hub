@@ -1,3 +1,5 @@
+import { exportReport } from '../../native/download';
+import { isAndroidBuild } from '../../native/platform';
 import React, { useState } from 'react';
 import { useUserData } from '../../context/UserDataContext';
 import { ConnectedUser } from '../../types';
@@ -20,7 +22,7 @@ export const UserSubscriberPortal: React.FC = () => {
   const [successMsg, setSuccessMsg] = useState('');
 
   // Admin view security protection
-  const [isAdminUnlocked, setIsAdminUnlocked] = useState(false);
+  const [isAdminUnlocked, setIsAdminUnlocked] = useState(isAndroidBuild);
   const [adminPinInput, setAdminPinInput] = useState('');
   const [pinError, setPinError] = useState(false);
 
@@ -42,13 +44,13 @@ export const UserSubscriberPortal: React.FC = () => {
     addConnectedUser({
       name,
       email,
-      phone: phone || '+92 300 0000000',
+      phone: phone || (isAndroidBuild ? '' : '+92 300 0000000'),
       role,
-      institution: institution || 'Bioinformatics Research Institute',
-      status: 'Active - Subscriber',
+      institution: institution || (isAndroidBuild ? '' : 'Bioinformatics Research Institute'),
+      status: isAndroidBuild ? 'Local contact' : 'Active - Subscriber',
     });
 
-    setSuccessMsg(`Welcome ${name}! You have successfully registered and subscribed to Bioinformatics Hub & YouTube updates.`);
+    setSuccessMsg(isAndroidBuild ? `${name} was saved in your local directory. No subscription request was sent.` : `Welcome ${name}! You have successfully registered and subscribed to Bioinformatics Hub & YouTube updates.`);
     setName('');
     setEmail('');
     setPhone('');
@@ -64,13 +66,7 @@ export const UserSubscriberPortal: React.FC = () => {
     });
 
     const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = `connected_biohub_users_${new Date().toISOString().split('T')[0]}.csv`;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    exportReport(`connected_biohub_users_${new Date().toISOString().split('T')[0]}.csv`, blob);
   };
 
   const filteredUsers = connectedUsersList.filter(u =>
@@ -90,10 +86,10 @@ export const UserSubscriberPortal: React.FC = () => {
             <span>Community & Research Access Portal</span>
           </div>
           <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 mt-1">
-            Connected Users & Subscription Portal
+            {isAndroidBuild ? 'Local research contacts' : 'Connected Users & Subscription Portal'}
           </h2>
           <p className="text-xs sm:text-sm text-slate-700 font-medium mt-1 max-w-2xl leading-relaxed">
-            Subscribe to get access to bioinformatics updates, video tutorials, and research tools. Private subscriber directory and Excel exporter are restricted to admin access.
+            {isAndroidBuild ? 'Local contact directory: entries are saved only on this device. This form does not send a subscription request or create an online account. Sample entries are included for demonstration.' : 'Subscribe to get access to bioinformatics updates, video tutorials, and research tools. Private subscriber directory and Excel exporter are restricted to admin access.'}
           </p>
         </div>
 
@@ -153,7 +149,7 @@ export const UserSubscriberPortal: React.FC = () => {
               <UserPlus className="w-5 h-5" />
             </div>
             <div>
-              <h3 className="text-lg font-extrabold text-slate-900">Subscribe & Connect to Hub</h3>
+              <h3 className="text-lg font-extrabold text-slate-900">{isAndroidBuild ? 'Save local research contact' : 'Subscribe & Connect to Hub'}</h3>
               <p className="text-xs text-slate-600 font-medium">Join our computational biology learning community.</p>
             </div>
           </div>
@@ -236,7 +232,7 @@ export const UserSubscriberPortal: React.FC = () => {
               className="w-full py-3 rounded-2xl text-xs sm:text-sm font-bold bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white shadow-md shadow-orange-500/20 flex items-center justify-center space-x-2 transition-all cursor-pointer"
             >
               <BellRing className="w-4 h-4" />
-              <span>Subscribe & Connect to Hub</span>
+              <span>{isAndroidBuild ? 'Save local research contact' : 'Subscribe & Connect to Hub'}</span>
             </button>
           </form>
         </div>
@@ -258,7 +254,7 @@ export const UserSubscriberPortal: React.FC = () => {
                 <ShieldCheck className="w-4 h-4 text-emerald-600" />
                 <span>Privacy Protection Guaranteed</span>
               </div>
-              Subscriber data is stored privately on the administrator backend and is never publicly exposed to unauthorized visitors.
+              {isAndroidBuild ? 'These entries are stored on this device. The view toggle is not a security boundary. No entries are uploaded.' : 'Subscriber data is stored privately on the administrator backend and is never publicly exposed to unauthorized visitors.'}
             </div>
           </div>
         </div>
@@ -271,13 +267,13 @@ export const UserSubscriberPortal: React.FC = () => {
             <div>
               <div className="flex items-center space-x-2">
                 <span className="text-xs font-mono font-bold uppercase px-2 py-0.5 rounded-lg bg-emerald-100 text-emerald-950 border border-emerald-300">
-                  Admin Authorized
+                  {isAndroidBuild ? 'Local directory' : 'Admin Authorized'}
                 </span>
               </div>
               <h3 className="text-lg font-extrabold text-slate-900 mt-1">
                 Private Connected Users Directory ({connectedUsersList.length})
               </h3>
-              <p className="text-xs text-slate-600 font-medium">Full database roster of subscribed researchers and students.</p>
+              <p className="text-xs text-slate-600 font-medium">{isAndroidBuild ? 'Sample and typed contacts saved on this device.' : 'Full database roster of subscribed researchers and students.'}</p>
             </div>
 
             {/* Search Box */}
@@ -349,7 +345,7 @@ export const UserSubscriberPortal: React.FC = () => {
       ) : (
         <div className="p-6 rounded-3xl bg-orange-50/70 border border-orange-200 text-center text-xs text-slate-600 font-medium shadow-xs">
           <Lock className="w-5 h-5 text-orange-600 mx-auto mb-1" />
-          <span>Subscriber directory is private and protected for administrator viewing only. Enter PIN <strong>2026</strong> above to unlock.</span>
+          <span>{isAndroidBuild ? 'Local directory hidden. Use PIN 2026 to reopen the view; it does not encrypt or protect stored entries.' : <>Subscriber directory is private and protected for administrator viewing only. Enter PIN <strong>2026</strong> above to unlock.</>}</span>
         </div>
       )}
 

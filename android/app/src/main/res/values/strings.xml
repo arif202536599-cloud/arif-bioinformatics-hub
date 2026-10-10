@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Arif Bio Hub</string>
+    <string name="title_activity_main">Arif Bio Hub</string>
+    <string name="package_name">com.arifuddin.biohub</string>
+    <string name="custom_url_scheme">com.arifuddin.biohub</string>
+</resources>

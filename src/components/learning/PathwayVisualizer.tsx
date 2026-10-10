@@ -1,3 +1,5 @@
+import { isNativeApp } from '../../native/platform';
+import { exportReport } from '../../native/download';
 import React, { useState } from 'react';
 import { learningPathways } from '../../data/learningPathsData';
 import { PathwayCard } from './PathwayCard';
@@ -21,11 +23,6 @@ export const PathwayVisualizer: React.FC<PathwayVisualizerProps> = ({ selectedPa
 
   const downloadPathwayPDF = () => {
     // Generate a publication-quality styled printable document for PDF export
-    const printWindow = window.open('', '_blank');
-    if (!printWindow) {
-      alert('Please allow popups to generate the printable PDF pathway report.');
-      return;
-    }
 
     const stepsHtml = currentPathway.steps.map(step => `
       <div style="margin-bottom: 24px; padding: 18px; border: 1px solid #fed7aa; border-radius: 12px; background-color: #fffdfa; page-break-inside: avoid;">
@@ -105,6 +102,9 @@ export const PathwayVisualizer: React.FC<PathwayVisualizerProps> = ({ selectedPa
       </html>
     `;
 
+    if (isNativeApp()) { exportReport('biohub_pathway_report.html', fullHtml.replace(/<script>[\s\S]*?<\/script>/g, ''), 'text/html'); return; }
+    const printWindow = window.open('', '_blank');
+    if (!printWindow) { alert('Please allow popups to generate the printable PDF pathway report.'); return; }
     printWindow.document.write(fullHtml);
     printWindow.document.close();
   };
@@ -132,7 +132,7 @@ export const PathwayVisualizer: React.FC<PathwayVisualizerProps> = ({ selectedPa
             className="self-start md:self-auto px-5 py-3 rounded-2xl bg-orange-600 hover:bg-orange-700 text-white text-xs font-bold flex items-center space-x-2 shadow-md transition-all cursor-pointer"
           >
             <Printer className="w-4 h-4" />
-            <span>Download Pathway Guide (PDF Report)</span>
+            <span>{isNativeApp() ? 'Share pathway guide (.html)' : 'Download Pathway Guide (PDF Report)'}</span>
           </button>
         </div>
 

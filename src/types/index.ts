@@ -153,7 +153,7 @@ export interface ConnectedUser {
   phone: string;
   role: string;
   institution?: string;
-  status: 'Active - Lifetime VIP' | 'Active - Subscriber' | 'Guest' | 'Pending';
+  status: 'Active - Lifetime VIP' | 'Active - Subscriber' | 'Guest' | 'Pending' | 'Local contact';
   subscribedDate: string;
 }
 

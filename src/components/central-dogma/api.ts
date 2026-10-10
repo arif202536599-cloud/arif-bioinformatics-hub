@@ -1,10 +1,11 @@
-const endpoint = `${import.meta.env.BASE_URL}.netlify/functions/central-dogma`;
+import { isNativeApp, centralDogmaEndpoint, nativeJSONRequest } from '../../native/platform';
+const endpoint = centralDogmaEndpoint(import.meta.env.BASE_URL, isNativeApp(), import.meta.env.VITE_CENTRAL_DOGMA_API);
 
 export async function explorerAPI(input: Record<string, unknown>, onWait?: (message: string) => void): Promise<any> {
   for (let attempt = 0; attempt < 8; attempt++) {
-    let response: Response;
+    let response: { ok: boolean; status: number; text: () => Promise<string> };
     try {
-      response = await fetch(endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json' },
+      response = isNativeApp() ? await nativeJSONRequest(endpoint, input) : await fetch(endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(input), signal: AbortSignal.timeout(45000) });
     } catch {
       throw new Error(input.action === 'submit' ? 'Submission was not confirmed. It may exist remotely; do not immediately resubmit.' : 'The backend could not be reached. Your existing results are retained.');

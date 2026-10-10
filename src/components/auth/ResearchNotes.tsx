@@ -1,3 +1,4 @@
+import { exportReport } from '../../native/download';
 import React, { useState } from 'react';
 import { useUserData } from '../../context/UserDataContext';
 import { ResearchNote } from '../../types';
@@ -52,13 +53,7 @@ export const ResearchNotes: React.FC = () => {
 
   const handleDownloadNote = (note: ResearchNote) => {
     const blob = new Blob([note.content], { type: 'text/markdown;charset=utf-8;' });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = `${note.title.replace(/[^a-zA-Z0-9]/g, '_')}.md`;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    exportReport(`${note.title.replace(/[^a-zA-Z0-9]/g, '_')}.md`, blob);
   };
 
   const filteredNotes = savedNotes.filter(n =>

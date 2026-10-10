@@ -1,4 +1,8 @@
-import React, { useState, useEffect, lazy, Suspense } from 'react';
+import { App as CapacitorApp } from '@capacitor/app';
+import { isNativeApp, isAndroidBuild } from './native/platform';
+import { NativeChrome } from './native/NativeChrome';
+import { PrivacyPage } from './native/PrivacyPage';
+import React, { useState, useEffect, useRef, lazy, Suspense } from 'react';
 import { AuthProvider } from './context/AuthContext';
 import { UserDataProvider } from './context/UserDataContext';
 import { Navbar } from './components/common/Navbar';
@@ -52,16 +56,31 @@ import { ResearchNotes } from './components/auth/ResearchNotes';
 const CentralDogmaExplorer = lazy(() => import('./components/central-dogma/CentralDogmaExplorer'));
 
 export const AppContent: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<string>(() => window.location.hash === '#central-dogma' ? 'central-dogma' : 'home');
+  const [activeTab, setActiveTab] = useState<string>(() => window.location.hash === '#privacy' ? 'privacy' : window.location.hash === '#central-dogma' ? 'central-dogma' : 'home');
   useEffect(() => {
-    const update = () => { if (window.location.hash === '#central-dogma') setActiveTab('central-dogma'); };
+    const update = () => { if (['#central-dogma','#privacy'].includes(window.location.hash)) setActiveTab(window.location.hash.slice(1)); };
     window.addEventListener('hashchange', update);
     return () => window.removeEventListener('hashchange', update);
   }, []);
-  useEffect(() => { if (activeTab === 'central-dogma') window.history.replaceState(null, '', '#central-dogma'); else if (window.location.hash === '#central-dogma') window.history.replaceState(null, '', window.location.pathname + window.location.search); }, [activeTab]);
+  useEffect(() => { if (['central-dogma','privacy'].includes(activeTab)) window.history.replaceState(null, '', '#' + activeTab); else if (['#central-dogma','#privacy'].includes(window.location.hash)) window.history.replaceState(null, '', window.location.pathname + window.location.search); }, [activeTab]);
   const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false);
   const [isAuthOpen, setIsAuthOpen] = useState<boolean>(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false);
+
+  const nativeHistory = useRef(['home']);
+  useEffect(() => {
+    if (!isNativeApp()) return;
+    document.body.classList.add('biohub-native');
+    if (nativeHistory.current.at(-1) !== activeTab) nativeHistory.current.push(activeTab);
+    const listener = CapacitorApp.addListener('backButton', () => {
+      if (isSidebarOpen) setIsSidebarOpen(false);
+      else if (isSearchOpen) setIsSearchOpen(false);
+      else if (isAuthOpen) setIsAuthOpen(false);
+      else if (nativeHistory.current.length > 1) { nativeHistory.current.pop(); setActiveTab(nativeHistory.current.at(-1)!); }
+      else void CapacitorApp.exitApp();
+    });
+    return () => { void listener.then(l => l.remove()); };
+  }, [activeTab, isSidebarOpen, isSearchOpen, isAuthOpen]);
 
   // Software filtering state
   const [searchQuery, setSearchQuery] = useState<string>('');
@@ -135,7 +154,7 @@ export const AppContent: React.FC = () => {
         activeTab={activeTab}
         setActiveTab={setActiveTab}
         onOpenSearch={() => setIsSearchOpen(true)}
-        onOpenAuth={() => setIsAuthOpen(true)}
+        onOpenAuth={() => isAndroidBuild ? setActiveTab('privacy') : setIsAuthOpen(true)}
         onToggleSidebar={() => setIsSidebarOpen(prev => !prev)}
       />
 
@@ -248,6 +267,7 @@ export const AppContent: React.FC = () => {
           </div>
         )}
 
+        {activeTab === 'privacy' && <PrivacyPage />}
         {activeTab === 'central-dogma' && <Suspense fallback={<p role="status">Loading Central Dogma Explorer…</p>}><CentralDogmaExplorer /></Suspense>}
 
         {/* =========================================================================
@@ -324,6 +344,7 @@ export const AppContent: React.FC = () => {
       </main>
 
       {/* Global Footer */}
+      {isNativeApp() && <NativeChrome activeTab={activeTab} navigate={handleNavigate} />}
       <Footer setActiveTab={setActiveTab} />
     </div>
   );
